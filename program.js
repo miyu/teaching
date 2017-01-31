@@ -1,6 +1,5 @@
 window.onload = function() {
     init(800, 500);
-
     var paddleWidth = 100;
     var bulletLength = 10;
     var x = 400 - paddleWidth / 2;
@@ -43,48 +42,43 @@ window.onload = function() {
 
             if (michael.x < bullet.x && bullet.x < michael.x + 200 &&
                 michael.y < bullet.y && bullet.y < michael.y + 100) {
-                bullet.y = -1000;    
+                bullet.y = -1000;
             }
         }
-
-
-
-
-
     });
 
     // init(800, 600);
     // var balls = [];
     // onFrameEnter(dt => {
-    //     clear("#59f2e2");
-    //     if (balls.length < 100) {
-    //         balls.push({
-    //             x: Math.random() * 800,
-    //             y: Math.random() * 600,
-    //             vx: Math.random() * 50 - 25,
-    //             vy: Math.random() * 50 - 25
-    //         });
-    //     }
-    //     for (var i = 0; i < balls.length; i++) {
-    //         var ball = balls[i];
-    //         ball.vy += 9.8 * dt ;
-    //         ball.vy *= 0.9999;
-    //         ball.x += ball.vx * dt;
-    //         ball.y += ball.vy * dt;
-    //         fillRect("#000000", ball.x, ball.y, 10, 10)
-    //         if (ball.x < 0) {
-    //             ball.vx = Math.abs(ball.vx);
-    //         }
-    //         if (ball.y < 0) {
-    //             ball.vy = Math.abs(ball.vy);
-    //         }
-    //         if (ball.x + 10 > 800) {
-    //             ball.vx = -Math.abs(ball.vx);
-    //         }
-    //         if (ball.y + 10 > 600) {
-    //             ball.vy = -Math.abs(ball.vy);
-    //         }
-    //     }
+    //     // clear("#59f2e2");
+    //     // if (balls.length < 100) {
+    //     //     balls.push({
+    //     //         x: Math.random() * 800,
+    //     //         y: Math.random() * 600,
+    //     //         vx: Math.random() * 50 - 25,
+    //     //         vy: Math.random() * 50 - 25
+    //     //     });
+    //     // }
+    //     // for (var i = 0; i < balls.length; i++) {
+    //     //     var ball = balls[i];
+    //     //     ball.vy += 9.8 * dt ;
+    //     //     ball.vy *= 0.9999;
+    //     //     ball.x += ball.vx * dt;
+    //     //     ball.y += ball.vy * dt;
+    //     //     fillRect("#000000", ball.x, ball.y, 10, 10)
+    //     //     if (ball.x < 0) {
+    //     //         ball.vx = Math.abs(ball.vx);
+    //     //     }
+    //     //     if (ball.y < 0) {
+    //     //         ball.vy = Math.abs(ball.vy);
+    //     //     }
+    //     //     if (ball.x + 10 > 800) {
+    //     //         ball.vx = -Math.abs(ball.vx);
+    //     //     }
+    //     //     if (ball.y + 10 > 600) {
+    //     //         ball.vy = -Math.abs(ball.vy);
+    //     //     }
+    //     // }
     //     // for (var x = 0; x <= 800; x++) {
     //     //     var y = Math.sin(x * 0.01) * 100;
     //     //     var y2 = Math.cos(x * 0.01) * 100;
