@@ -31,8 +31,9 @@ function init(width, height) {
 
 function renderStep() {
     var now = new Date();
-    dt = new Date();
-    frameEnterHooks.forEach(hook => hook());
+    var dt = (now - global.lastRenderTime) / 1000;
+    global.lastRenderTime = now;
+    frameEnterHooks.forEach(hook => hook(dt));
     window.requestAnimationFrame(renderStep);
 }
 
