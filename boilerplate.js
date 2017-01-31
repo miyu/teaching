@@ -59,14 +59,22 @@ function clear(color) {
 }
 
 function clearRect() {
-    assert(arguments.length == 4, "clearRect must take 4 arguments");
-    global.context.clearRect.apply(global.context, arguments);
+    assert(arguments.length == 1 || arguments.length == 4, "clearRect must take 1 or 4 arguments");
+    global.context.clearRect.apply(
+        global.context,
+        arguments.length == 1
+            ? flattenRectangle(arguments[0])
+            : arguments);
 }
 
 function fillRect() {
-    assert(arguments.length == 5, "fillRect must take 5 arguments");
+    assert(arguments.length == 2 || arguments.length == 5, "fillRect must take 2 or 5 arguments");
     global.context.fillStyle = arguments[0];
-    global.context.fillRect.apply(global.context, Array.apply(null, arguments).slice(1));
+    global.context.fillRect.apply(
+        global.context,
+        arguments.length == 2
+            ? flattenRectangle(arguments[1])
+            : Array.apply(null, arguments).slice(1));
 }
 
 function drawLine() {
@@ -76,4 +84,15 @@ function drawLine() {
     global.context.moveTo.apply(global.context, Array.apply(null, arguments).slice(1, 3));
     global.context.lineTo.apply(global.context, Array.apply(null, arguments).slice(3, 5));
     global.context.stroke();
+}
+
+function makeRectangle(x, y, width, height) {
+    return { x, y, width, height };
+}
+
+function flattenRectangle(rect) { return [rect.x, rect.y, rect.width, rect.height]; }
+
+function checkOverlap(a, b) {
+    return !(a.x + a.width < b.x || a.x > b.x + b.width ||
+             a.y + a.height < b.y || a.y > b.y + b.height);
 }
