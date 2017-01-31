@@ -3,7 +3,7 @@ window.onload = function() {
 
     var x = 0, y = 0;
     onFrameEnter(() => {
-        clear("#FF00FF");
+        clear("#59f2e2");
         for (var i = 0; i < 5; i++) {
             for (var j = 0; j < 5; j++) {
                 if ((i + j) % 2 == 0) {
@@ -13,12 +13,12 @@ window.onload = function() {
                 }
             }
         }
+        drawLine("#000000", 0, 0, 500, 500);
+
         if (Key.isDown('ArrowLeft')) x -= 10;
         if (Key.isDown('ArrowRight')) x += 10;
         if (Key.isDown('ArrowUp')) y -= 10;
         if (Key.isDown('ArrowDown')) y += 10;
         fillRect("#000000", x, y, 10, 10);
-
-        drawLine("#000000", 0, 0, 500, 500);
     });
 };
