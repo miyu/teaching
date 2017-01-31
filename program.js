@@ -1,7 +1,9 @@
 window.onload = function() {
     init(800, 600);
 
-    var gridSideLength = 9;
+    var gridSideLength = 30;
+    var gridDisplayTileLength = 16;
+    var gridDisplayTileSpacing = 18;
 
     var grid = [];
     for (var y = 0; y < gridSideLength; y++) {
@@ -15,11 +17,12 @@ window.onload = function() {
     var snakeLength = 3;
     var snakeX = 3, snakeY = 4;
     var snakeVx = 1, snakeVy = 0;
+    var snakeLengthIncrease = 1;
 
     var appleX = 7, appleY = 7;
 
     var stepTimeCounter = 0;
-    var stepTimeThreshold = 0.25;
+    var stepTimeThreshold = 0.05;
 
     onFrameEnter(dt => {
         // Always handle input
@@ -55,11 +58,11 @@ window.onload = function() {
         while (grid[appleY][appleX] > 0) {
             appleX = randomInt(0, gridSideLength);
             appleY = randomInt(0, gridSideLength);
-            snakeLength++;
+            snakeLength += snakeLengthIncrease;
             for (var y = 0; y < gridSideLength; y++) {
                 for (var x = 0; x < gridSideLength; x++) {
                     if (grid[y][x] > 0) {
-                        grid[y][x]++;
+                        grid[y][x] += snakeLengthIncrease;
                     }
                 }
             }
@@ -68,7 +71,11 @@ window.onload = function() {
         clear("#000000");
         for (var y = 0; y < gridSideLength; y++) {
             for (var x = 0; x < gridSideLength; x++) {
-                var cellRectangle = makeRectangle(x * 50 + 5, y * 50 + 5, 45, 45);
+                var cellRectangle = makeRectangle(
+                    x * gridDisplayTileSpacing + 5,
+                    y * gridDisplayTileSpacing + 5,
+                    gridDisplayTileLength,
+                    gridDisplayTileLength);
 
                 if (grid[y][x] > 0) {
                     fillRect("#00FF00", cellRectangle);
