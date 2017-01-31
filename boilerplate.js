@@ -96,3 +96,11 @@ function checkOverlap(a, b) {
     return !(a.x + a.width < b.x || a.x > b.x + b.width ||
              a.y + a.height < b.y || a.y > b.y + b.height);
 }
+
+function randomDouble(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+function randomInt(min, max) {
+    return Math.floor(randomDouble(min, max));
+}
