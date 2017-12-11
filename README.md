@@ -1,0 +1,3 @@
+# teaching
+
+License: MIT.
